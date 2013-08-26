@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Install Fabric and dependencies if necessary
+if [ -z "$(which fab)" ]
+then
+    SCRIPT_URL=https://raw.github.com/laurentmoss/fabric-bootstrap/master/ubuntu.sh
+    script_path=$(mktemp)
+    wget --output-document=${script_path} ${SCRIPT_URL} 2>/dev/null
+    chmod +x ${script_path}
+    ${script_path}
+    rm -f ${script_path}
+fi
+
+# Execute Fabric
+fab
